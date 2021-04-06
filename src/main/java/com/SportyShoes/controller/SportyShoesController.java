@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-public class GreetingController {
+public class SportyShoesController {
 
     @Value("${spring.application.name}")
     String appName;
@@ -21,5 +21,15 @@ public class GreetingController {
         model.addAttribute("name", name);
         model.addAttribute("appName", appName);
         return "greeting";
+    }
+
+    @GetMapping("/login")
+    public String login(@RequestParam(name="name",
+            required=false,
+            defaultValue="Customer") String name,
+                           Model model) {
+        model.addAttribute("name", name);
+        model.addAttribute("appName", appName);
+        return "login";
     }
 }
