@@ -58,8 +58,15 @@ public class SportyShoesController {
         String password = pass[0];
 
         userList = sportyShoesService.validateUserCredentials(userId, password);
-        if(userList.size() > 0) {
-            redirectUrl = "loginSuccess";
+        if(userList.size() > 0
+                && userList.get(0).getRole().equalsIgnoreCase("Store Manager")) {
+            redirectUrl = "adminLoginSuccess";
+            model.addAttribute("name",
+                    userList.get(0).getAdminFName() + " "+userList.get(0).getAdminLName());
+        }
+        else if(userList.size() > 0 &&
+                userList.get(0).getRole().equalsIgnoreCase("Store Customer")) {
+            redirectUrl = "CustomerLoginSuccess";
             model.addAttribute("name",
                     userList.get(0).getAdminFName() + " "+userList.get(0).getAdminLName());
         }

@@ -18,10 +18,17 @@
 <body>
 <h1><p>Welcome to Sporty Shoes E-Shop !!!!</p></h1>
 <h1><p th:text="'Hello Admin - ' + ${name} + '!'" /></h1>
-<form name="loginSuccessForm">
+<form name="adminSuccessForm">
     <p>
-        <button style="font-size:25px;" type = 'submit' onclick="document.forms['loginSuccessForm'].action = '/OrderShoe'; return true;">
-            Order Shoe
+        <button style="font-size:25px;" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/manageStore'; return true;">
+            Manage Store Inventory
+        </button>
+    </p>
+</form>
+<form name="logoutForm">
+    <p>
+        <button style="font-size:25px;" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
+            Logout
         </button>
     </p>
 </form>
