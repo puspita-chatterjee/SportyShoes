@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Sporty Shoes E-Shop</title>
+    <style>
+        p {text-align: center;}
+        button {text-align: centre;}
+        body {
+            background-image: url('https://img.freepik.com/free-photo/fashion-male-sport-shoes-blue-background-stylish-man-sneakers-fitness-close-up_77190-1693.jpg?size=626&ext=jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #FFFFFF;
+        }
+        h1 { color: #5bf116; }
+        h2 { color: #337fea; }
+        .myTableText {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #98FB98;
+        }
+        .myTableText td {
+            border: 2px solid #47ae32;
+            color: #00040c;
+        }
+        .myTableText th {
+            border: 2px solid #47ae32;
+            padding: 5px;
+        }
+        .myTableText th {
+            font: bold 18px/1.1em Arial, Helvetica, sans-serif;
+            text-shadow: 1px 1px 4px black;
+            letter-spacing: 0.1em;
+            background-color: #47ae32;
+            color: #00040c;
+        }
+    </style>
+</head>
+<body>
+<h1><p>Sporty Shoes E-Shop Order Details</p></h1>
+<div>
+    <table align="center" class="myTableText">
+        <tr>
+            <th>Order Id</th>
+            <th>Order Status</th>
+            <th>Customer Name</th>
+            <th>Product Description</th>
+            <th>Quantity</th>
+            <th>Order Date</th>
+            <th>Order Creation Date</th>
+        </tr>
+        <tr th:each="order : ${orderList}">
+            <td th:text="${order.orderId}"></td>
+            <td th:text="${order.orderStatus}"></td>
+            <td th:text="${order.customerName}"></td>
+            <td th:text="${order.orderProduct}"></td>
+            <td th:text="${order.orderQty}"></td>
+            <td th:text="${order.orderDate}"></td>
+            <td th:text="${order.orderCreateDate}"></td>
+        </tr>
+    </table>
+</div>
+</body>
+</html>

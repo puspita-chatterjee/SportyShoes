@@ -2,6 +2,7 @@ package com.SportyShoes.controller;
 
 
 import com.SportyShoes.bean.ApplicationUser;
+import com.SportyShoes.bean.OrderDetails;
 import com.SportyShoes.bean.Product;
 import com.SportyShoes.service.SportyShoesService;
 import lombok.extern.slf4j.Slf4j;
@@ -91,5 +92,13 @@ public class SportyShoesController {
         model.addAttribute("productList", productList);
         model.addAttribute("appName", appName);
         return "product";
+    }
+
+    @GetMapping("/checkOrder")
+    public String fetchOderList(Model model){
+        List<OrderDetails> orderList = sportyShoesService.fetchOderList();
+        model.addAttribute("orderList", orderList);
+        model.addAttribute("appName", appName);
+        return "fetchOrderDetails";
     }
 }

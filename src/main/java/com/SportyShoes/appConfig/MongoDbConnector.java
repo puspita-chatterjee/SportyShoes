@@ -1,6 +1,7 @@
 package com.SportyShoes.appConfig;
 
 import com.SportyShoes.bean.ApplicationUser;
+import com.SportyShoes.bean.OrderDetails;
 import com.SportyShoes.bean.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,6 +37,14 @@ public class MongoDbConnector {
        return productList;
     }
 
+    /**
+     * Method validates user Login Inputs
+     * w.r.t Database.
+     *
+     * @param userId
+     * @param password
+     * @return
+     */
     public List<ApplicationUser> validateLogin(String userId, String password){
         List<ApplicationUser> userList = null;
         Query isUserAvailable = new Query();
@@ -45,5 +54,16 @@ public class MongoDbConnector {
         userList = mongoTemplate.find(isUserAvailable, ApplicationUser.class);
 
         return userList;
+    }
+
+    /**
+     * Method fetches order details
+     * from Mongo DB
+     * @return
+     */
+    public List<OrderDetails> fetchOderList(){
+        List<OrderDetails> orderDetails = null;
+        orderDetails = mongoTemplate.findAll(OrderDetails.class);
+        return orderDetails;
     }
 }

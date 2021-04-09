@@ -2,12 +2,14 @@ package com.SportyShoes.service;
 
 import com.SportyShoes.appConfig.MongoDbConnector;
 import com.SportyShoes.bean.ApplicationUser;
+import com.SportyShoes.bean.OrderDetails;
 import com.SportyShoes.bean.Product;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.ListIterator;
 
 @Component
 @Slf4j
@@ -40,5 +42,17 @@ public class SportyShoesService {
         userList = mongoDbConnector.validateLogin(userId, password);
 
         return userList;
+    }
+
+    /**
+     * Method to return
+     * Order details.
+     *
+     * @return
+     */
+    public List<OrderDetails> fetchOderList(){
+        List<OrderDetails> orderDetails = null;
+        orderDetails = mongoDbConnector.fetchOderList();
+        return orderDetails;
     }
 }
