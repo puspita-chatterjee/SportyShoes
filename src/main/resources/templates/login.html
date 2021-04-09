@@ -16,7 +16,7 @@
 	<title>Sporty Shoes Application - Login</title>
 </head>
 <body>
-	<form method = "post" action = "LoginServlet">
+	<form name="loginForm">
 		<h1><p>Sporty Shoes E-Shop</p></h1>
 		<p>
 			Enter User Name :<input type = "text" name = 'uname'/>
@@ -25,7 +25,7 @@
 			Enter Password :<input type = 'password' name = 'pass'/>
 		</p>
 		<p>
-			<button style="font-size:25px;" type = 'submit' >login</button>
+			<button style="font-size:25px;" type = 'submit' onclick="document.forms['loginForm'].action = '/validateLogin'; return true;">login</button>
 		</p>
 	</form>
 </body>

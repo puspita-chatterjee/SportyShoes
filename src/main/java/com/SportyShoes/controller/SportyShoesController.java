@@ -1,6 +1,7 @@
 package com.SportyShoes.controller;
 
 
+import com.SportyShoes.bean.ApplicationUser;
 import com.SportyShoes.bean.Product;
 import com.SportyShoes.service.SportyShoesService;
 import lombok.extern.slf4j.Slf4j;
@@ -9,10 +10,12 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import javax.servlet.http.HttpServletRequest;
+import java.util.Arrays;
 import java.util.List;
-import java.util.logging.Logger;
+import java.util.Map;
 
 @Controller
 @Slf4j
@@ -42,6 +45,28 @@ public class SportyShoesController {
         model.addAttribute("name", name);
         model.addAttribute("appName", appName);
         return "login";
+    }
+
+    @GetMapping ("/validateLogin")
+    public String validateLogin(HttpServletRequest request, Model model) {
+        String redirectUrl = "";
+        List<ApplicationUser> userList = null;
+        Map<String, String[]> requestParam = request.getParameterMap();
+        String uname[] = requestParam.get("uname");
+        String pass[] = requestParam.get("pass");
+        String userId = uname[0];
+        String password = pass[0];
+
+        userList = sportyShoesService.validateUserCredentials(userId, password);
+        if(userList.size() > 0) {
+            redirectUrl = "loginSuccess";
+            model.addAttribute("name",
+                    userList.get(0).getAdminFName() + " "+userList.get(0).getAdminLName());
+        }
+        else
+            redirectUrl = "loginRetry";
+        model.addAttribute("appName", appName);
+        return redirectUrl;
     }
 
     @GetMapping("/product")
