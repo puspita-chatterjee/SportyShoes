@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        p {text-align: center;}
+        button {text-align: centre;}
+        body {
+            background-image: url('https://img.freepik.com/free-photo/fashion-male-sport-shoes-blue-background-stylish-man-sneakers-fitness-close-up_77190-1693.jpg?size=626&ext=jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            color: #FFFFFF;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Welcome to Sporty Shoes E-Shop</title>
+</head>
+<body>
+<h1><p>Welcome to Sporty Shoes E-Shop !!!!</p></h1>
+<h1><p th:text="'Hello Customer - ' + ${name} + '!'" /></h1>
+<form method = "post" name = "orderShoe">
+    <table class="center">
+        <tr>
+            <td><p>Name:</p></td>
+            <td><input type = "text" name = 'uname'/></td>
+        </tr>
+        <tr>
+            <td><p>Age:</p></td>
+            <td><input type = "text" name = 'age'/></td>
+        </tr>
+        <tr>
+            <td><p>Email:</p></td>
+            <td><input type = 'text' name = 'email'/></td>
+        </tr>
+        <tr>
+            <td><p>Address:</p></td>
+            <td><input type = "text" name = 'address'/></td>
+        </tr>
+        <tr>
+            <td><p>City:</p></td>
+            <td><input type = "text" name = 'city'/></td>
+        </tr>
+        <tr>
+            <td><p>Zip:</p></td>
+            <td><input type = "text" name = 'zip'/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button style="font-size:25px;" type = 'submit' onclick="document.forms['orderShoe'].action = '/placeOrder'; return true;">
+                    Place Order
+                </button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>

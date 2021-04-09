@@ -76,6 +76,12 @@ public class SportyShoesController {
         return redirectUrl;
     }
 
+    @GetMapping("OrderShoe")
+    public String OrderShoe(Model model){
+        model.addAttribute("appName", appName);
+        return "orderShoe";
+    }
+
     @GetMapping("/product")
     public String productList(Model model) {
         List<Product> productList = sportyShoesService.getProductList();
