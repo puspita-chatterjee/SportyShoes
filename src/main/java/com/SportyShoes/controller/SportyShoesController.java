@@ -86,9 +86,6 @@ public class SportyShoesController {
     @GetMapping("/product")
     public String productList(Model model) {
         List<Product> productList = sportyShoesService.getProductList();
-        for(Product p: productList){
-            log.info("Product Name - ", p.getProductName());
-        }
         model.addAttribute("productList", productList);
         model.addAttribute("appName", appName);
         return "product";
