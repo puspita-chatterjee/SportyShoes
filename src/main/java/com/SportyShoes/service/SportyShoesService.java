@@ -65,8 +65,7 @@ public class SportyShoesService {
      * @param orderDetails
      * @return
      */
-    public boolean saveCustomerOrder(OrderDetails orderDetails){
-        boolean isSaved = false;
+    public String saveCustomerOrder(OrderDetails orderDetails){
         String confirmationNumber = "SS-"+ UUID.randomUUID().toString().substring(0, 12).toUpperCase();
         orderDetails.setOrderId(confirmationNumber);
         orderDetails.setOrderStatus("In Progress");
@@ -74,8 +73,6 @@ public class SportyShoesService {
         orderDetails.setOrderCreateDate(new Date().toString());
         log.info("orderDetails- ", orderDetails);
         orderDetails = mongoDbConnector.saveCustomerOrder(orderDetails);
-        if(orderDetails != null)
-            isSaved = true;
-        return isSaved;
+        return orderDetails.getOrderId();
     }
 }

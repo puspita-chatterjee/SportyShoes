@@ -93,8 +93,10 @@ public class SportyShoesController {
         orderDetails.setCustomerName(customerName[0]);
         orderDetails.setOrderQty(orderQuantity[0]);
         orderDetails.setOrderProduct(productTypes[0]);
-        sportyShoesService.saveCustomerOrder(orderDetails);
+        String orderConfirmation = sportyShoesService.saveCustomerOrder(orderDetails);
+
         model.addAttribute("appName", appName);
+        model.addAttribute("orderConfirmation", orderConfirmation);
 
         return "orderPlaceSuccess";
     }
