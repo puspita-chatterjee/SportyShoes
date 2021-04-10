@@ -5,23 +5,23 @@
         p {text-align: center;}
         button {text-align: centre;}
         body {
-            background-image: url('/images/admin_Image.jpeg');
+            background-image: url('/images/SportyShoe2.jpeg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
             color: #FFFFFF;
         }
-        .adminUpdateTableStyle {
+        .createUserTableStyle {
             width: 70%;
             border-collapse: collapse;
         }
-        .adminUpdateTableStyle tr {
+        .createUserTableStyle tr {
             color: #00040c;
         }
-        .adminUpdateTableStyle tr {
+        .createUserTableStyle tr {
             padding: 5px;
         }
-        .adminUpdateTableStyle td {
+        .createUserTableStyle td {
             border: #00040c 1px;
             font: bold 18px/1.1em Arial, Helvetica, sans-serif;
             letter-spacing: 0.1em;
@@ -53,44 +53,55 @@
         }
     </style>
     <meta charset="UTF-8">
-    <title>Sporty Shoes E-Shop - Admin Update</title>
+    <title>Sporty Shoes E-Shop - User Registration</title>
 </head>
 <body>
-<h1><p>Update Your details - </p></h1>
+<h1><p>User Registration : Provide Your details - </p></h1>
 <div>
-    <form name = "adminUpdate">
-        <table align="center" class="adminUpdateTableStyle">
+    <form name = "createUser">
+        <table align="center" class="createUserTableStyle">
             <tr>
-                <td><p>Admin Id:</p></td>
-                <td><input size="5" th:value="*{adminId}" type="text" readonly name="adminId"></td>
+                <td><p>** First Name:</p></td>
+                <td><input size = "35" type = "text" name = 'userFName'/></td>
             </tr>
             <tr>
-                <td><p>Admin First Name:</p></td>
-                <td><input size = "35" th:value="*{adminFName}" type = "text" readonly name = 'adminFName'/></td>
+                <td><p>** Last Name:</p></td>
+                <td><input size = "35" type = 'text' name = 'userLName'/></td>
             </tr>
             <tr>
-                <td><p>Admin Last Name:</p></td>
-                <td><input size = "35" th:value="*{adminLName}" type = 'text' readonly name = 'adminLName'/></td>
+                <td><p>** Gender:</p></td>
+                <td>
+                    <select name="userGender">
+                        <option selected value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                </td>
             </tr>
             <tr>
                 <td><p>** Role:</p></td>
-                <td><input size = "25" th:value="*{role}" type = 'text' name = 'role'/></td>
+                <td>
+                    <select name="userRole">
+                        <option selected value="Store Customer">Store Customer</option>
+                        <option value="Store Manager">Store Manager</option>
+                        <option value="Store Sales">Store Sales</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <td><p>User Name:</p></td>
-                <td><input size = "20" th:value="*{username}" type = 'text' readonly name = 'username'/></td>
+                <td><p>** User Name:</p></td>
+                <td><input size = "20" type = 'text' name = 'userLoginName'/></td>
             </tr>
             <tr>
                 <td><p>** Password:</p></td>
-                <td><input size = "20" th:value="*{password}" type = 'password' name = 'password'/></td>
+                <td><input size = "20" type = 'password' name = 'userLoginPassword'/></td>
             </tr>
             <tr>
                 <td><p>** Email:</p></td>
-                <td><input size = "20" th:value="*{email}" type = 'text' name = 'adminEmail'/></td>
+                <td><input size = "20" type = 'text' name = 'userEmail'/></td>
             </tr>
             <tr>
-                <td><p>Phone:</p></td>
-                <td><input size = "10" th:value="*{phone}" type = 'text' readonly name = 'adminEmail'/></td>
+                <td><p>** Phone:</p></td>
+                <td><input size = "10" type = 'text' name = 'userPhone'/></td>
             </tr>
         </table>
         <br>
@@ -98,13 +109,8 @@
             <table>
                 <tr>
                     <td>
-                        <button class="button" type = 'submit'>
-                            Deactivate
-                        </button>
-                    </td>
-                    <td>
-                        <button class="button" type = 'submit' onclick="document.forms['adminUpdate'].action = '/updateAccount'; return true;">
-                            Update Profile
+                        <button class="button" type = 'submit' onclick="document.forms['createUser'].action = '/registerUser'; return true;">
+                            Create Profile
                         </button>
                     </td>
                 </tr>
@@ -112,7 +118,7 @@
         </div>
     </form>
     <footer>
-        <p>Fields marked as ** are only editable.</p>
+        <p>Fields marked as ** are mandatory.</p>
     </footer>
 </div>
 </body>

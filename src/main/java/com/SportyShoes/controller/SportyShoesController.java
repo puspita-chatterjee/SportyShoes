@@ -240,6 +240,8 @@ public class SportyShoesController {
         model.addAttribute("role", userProfileDetails.getRole());
         model.addAttribute("username", userProfileDetails.getUsername());
         model.addAttribute("password", userProfileDetails.getPassword());
+        model.addAttribute("email", userProfileDetails.getEmail());
+        model.addAttribute("phone", userProfileDetails.getPhone());
         model.addAttribute("appName", appName);
         return "profileDetails";
     }
@@ -259,14 +261,49 @@ public class SportyShoesController {
         String adminId[] = userUpdateParam.get("adminId");
         String role[] = userUpdateParam.get("role");
         String password[] = userUpdateParam.get("password");
+        String adminEmail[] = userUpdateParam.get("adminEmail");
 
         ApplicationUser applicationUser = new ApplicationUser();
         applicationUser.setAdminId(adminId[0]);
         applicationUser.setRole(role[0]);
         applicationUser.setPassword(password[0]);
+        applicationUser.setEmail(adminEmail[0]);
 
         sportyShoesService.updateProfile(applicationUser);
 
         return "profileUpdateSuccess";
+    }
+
+    @GetMapping("/createUser")
+    public String createUser(Model model){
+        return "createUser";
+    }
+
+    @GetMapping("/registerUser")
+    public String registerUser(HttpServletRequest request,Model model){
+        Map<String, String[]> userCreateParam = request.getParameterMap();
+
+        String userFName[] = userCreateParam.get("userFName");
+        String userLName[] = userCreateParam.get("userLName");
+        String userGender[] = userCreateParam.get("userGender");
+        String userRole[] = userCreateParam.get("userRole");
+        String userLoginName[] = userCreateParam.get("userLoginName");
+        String userLoginPassword[] = userCreateParam.get("userLoginPassword");
+        String userEmail[] = userCreateParam.get("userEmail");
+        String userPhone[] = userCreateParam.get("userPhone");
+
+        ApplicationUser createApplicationUser = new ApplicationUser();
+        createApplicationUser.setAdminFName(userFName[0]);
+        createApplicationUser.setAdminLName(userLName[0]);
+        createApplicationUser.setGender(userGender[0]);
+        createApplicationUser.setRole(userRole[0]);
+        createApplicationUser.setUsername(userLoginName[0]);
+        createApplicationUser.setPassword(userLoginPassword[0]);
+        createApplicationUser.setEmail(userEmail[0]);
+        createApplicationUser.setPhone(userPhone[0]);
+
+        sportyShoesService.createUserProfile(createApplicationUser);
+
+        return "profileCreationSuccess";
     }
 }

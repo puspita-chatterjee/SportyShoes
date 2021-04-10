@@ -122,4 +122,20 @@ public class SportyShoesService {
             isUpdated = true;
         return isUpdated;
     }
+
+    /**
+     * Method to create User.
+     *
+     * @param applicationUser
+     * @return
+     */
+    public ApplicationUser createUserProfile(ApplicationUser applicationUser){
+        int min = 105;
+        int max = 200;
+        int random_int = (int)Math.floor(Math.random()*(max-min+1)+min);
+        applicationUser.setAdminId(Integer.toString(random_int));
+        applicationUser.setActive("Y");
+        applicationUser = mongoDbConnector.createUserProfile(applicationUser);
+        return applicationUser;
+    }
 }

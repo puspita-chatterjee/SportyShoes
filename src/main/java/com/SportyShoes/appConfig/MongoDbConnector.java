@@ -124,7 +124,19 @@ public class MongoDbConnector {
         Update update = new Update();
         update.set("role", userProfile.getRole());
         update.set("password", userProfile.getPassword());
+        update.set("email", userProfile.getEmail());
         userProfile = mongoTemplate.findAndModify(queryParam, update, ApplicationUser.class);
         return userProfile;
+    }
+
+    /**
+     * Method to create User Profile
+     *
+     * @param applicationUser
+     * @return
+     */
+    public ApplicationUser createUserProfile(ApplicationUser applicationUser){
+        applicationUser = mongoTemplate.save(applicationUser);
+        return applicationUser;
     }
 }

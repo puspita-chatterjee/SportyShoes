@@ -14,11 +14,14 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 public class ApplicationUser {
-    String adminId;
-    String adminFName;
-    String adminLName;
-    String role;
-    String active;
-    String username;
-    String password;
+    private String adminId;
+    private String adminFName;
+    private String adminLName;
+    private String role;
+    private String active;
+    private String username;
+    private String password;
+    private String email;
+    private String phone;
+    private String gender;
 }

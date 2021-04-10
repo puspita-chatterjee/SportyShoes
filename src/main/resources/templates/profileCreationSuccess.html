@@ -1,20 +1,19 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sporty Shoes Application</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <style>
         p {text-align: center;}
         button {text-align: centre;}
         body {
-            background-image: url('/images/shoeList_Image.jpeg');
+            background-image: url('/images/SportyShoe2.jpeg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: 100% 100%;
             color: #FFFFFF;
         }
-        h1 { color: #a816f1; }
+        h1 { color: #B544E5; }
         h2 { color: #337fea; }
+        h3 { color: #337fea; }
         .button {
             background-color: #08acf3;
             border: 2px solid #032cf7;
@@ -35,34 +34,31 @@
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
     </style>
+    <meta charset="UTF-8">
+    <title>Welcome to Sporty Shoes E-Shop</title>
 </head>
 <body>
-<h1><p th:text="'Hello ' + ${name} + '!'" /></h1>
-<h2><p>Welcome to <span th:text="${appName}">Our App</span></p></h2>
-<h2><p style="font-size:25px;"> Please Log in if already registered!</p></h2>
-<br/>
-<form name="loginForm">
+<h1><p>Profile creation successful</p></h1>
+<h2><p>Continue using the application !!</p></h2>
+<form name="userProfileForm">
     <table align="center">
         <tr>
             <td>
-                <button class="button" type = 'submit' onclick="document.forms['loginForm'].action = '/login'; return true;">
-                    Log in
-                </button>
+                <p>
+                    <button class="button" type = 'submit' onclick="document.forms['userProfileForm'].action = '/OrderShoe'; return true;">
+                        Place Order
+                    </button>
+                </p>
             </td>
             <td>
-                <button class="button" type = 'submit' onclick="document.forms['loginForm'].action = '/createUser'; return true;">
-                    New User
-                </button>
+                <p>
+                    <button class="button" type = 'submit' onclick="document.forms['userProfileForm'].action = '/greeting'; return true;">
+                        Logout
+                    </button>
+                </p>
             </td>
         </tr>
     </table>
-</form>
-<form name="productListForm">
-    <p>
-        <button class="button" type = 'submit' onclick="document.forms['productListForm'].action = '/product'; return true;">
-            View Products
-        </button>
-    </p>
 </form>
 </body>
 </html>
