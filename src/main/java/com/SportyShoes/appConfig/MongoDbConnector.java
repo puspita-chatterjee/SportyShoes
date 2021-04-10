@@ -66,4 +66,14 @@ public class MongoDbConnector {
         orderDetails = mongoTemplate.findAll(OrderDetails.class);
         return orderDetails;
     }
+
+    /**
+     * Method to save Order details.
+     *
+     * @param orderDetails
+     * @return
+     */
+    public OrderDetails saveCustomerOrder(OrderDetails orderDetails){
+        return mongoTemplate.insert(orderDetails);
+    }
 }

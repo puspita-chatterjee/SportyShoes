@@ -11,13 +11,15 @@
             background-size: 100% 100%;
             color: #FFFFFF;
         }
+        h1 { color: #B544E5; }
+        h2 { color: #337fea; }
     </style>
     <meta charset="UTF-8">
     <title>Welcome to Sporty Shoes E-Shop</title>
 </head>
 <body>
 <h1><p>Welcome to Sporty Shoes E-Shop !!!!</p></h1>
-<h1><p th:text="'Hello Customer - ' + ${name} + '!'" /></h1>
+<h2><p th:text="'Hello - ' + ${name} + ' !'" /></h2>
 <form name="customerSuccessForm">
     <p>
         <button style="font-size:25px;" type = 'submit' onclick="document.forms['customerSuccessForm'].action = '/OrderShoe'; return true;">

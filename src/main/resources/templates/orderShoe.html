@@ -11,48 +11,67 @@
             background-size: 100% 100%;
             color: #FFFFFF;
         }
+        .orderTableStyle {
+            width: 70%;
+            border-collapse: collapse;
+        }
+        .orderTableStyle tr {
+            color: #00040c;
+        }
+        .orderTableStyle tr {
+            padding: 5px;
+        }
+        .orderTableStyle td {
+            border: #00040c 1px;
+            font: bold 18px/1.1em Arial, Helvetica, sans-serif;
+            letter-spacing: 0.1em;
+            color: #00040c;
+        }
     </style>
     <meta charset="UTF-8">
     <title>Welcome to Sporty Shoes E-Shop</title>
 </head>
 <body>
-<h1><p>Welcome to Sporty Shoes E-Shop !!!!</p></h1>
-<h1><p th:text="'Hello Customer - ' + ${name} + '!'" /></h1>
-<form method = "post" name = "orderShoe">
-    <table class="center">
-        <tr>
-            <td><p>Name:</p></td>
-            <td><input type = "text" name = 'uname'/></td>
-        </tr>
-        <tr>
-            <td><p>Age:</p></td>
-            <td><input type = "text" name = 'age'/></td>
-        </tr>
-        <tr>
-            <td><p>Email:</p></td>
-            <td><input type = 'text' name = 'email'/></td>
-        </tr>
-        <tr>
-            <td><p>Address:</p></td>
-            <td><input type = "text" name = 'address'/></td>
-        </tr>
-        <tr>
-            <td><p>City:</p></td>
-            <td><input type = "text" name = 'city'/></td>
-        </tr>
-        <tr>
-            <td><p>Zip:</p></td>
-            <td><input type = "text" name = 'zip'/></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td>
-                <button style="font-size:25px;" type = 'submit' onclick="document.forms['orderShoe'].action = '/placeOrder'; return true;">
-                    Place Order
-                </button>
-            </td>
-        </tr>
-    </table>
-</form>
+<h1><p>Provide details to place Order !!!!</p></h1>
+<h1><p th:text="'Hello - ' + ${name} + '!'" /></h1>
+<div>
+    <form name = "orderShoe">
+        <table align="center" class="orderTableStyle">
+            <tr>
+                <td><p>Customer Name:</p></td>
+                <td><input size="35" type = "text" name = 'customerName'/></td>
+            </tr>
+            <tr>
+                <td><p>Order Quantity:</p></td>
+                <td><input size = "5" type = "text" name = 'orderQty'/></td>
+            </tr>
+            <tr>
+                <td><p>Email:</p></td>
+                <td><input size = "35" type = 'text' name = 'customerEmail'/></td>
+            </tr>
+            <tr>
+                <td><p>Choose Product:</p></td>
+                <td>
+                    <select name="productType">
+                        <option value="Nike Running Shoes" selected>Nike Running</option>
+                        <option value="Nike Sports Shoes">Nike Sports</option>
+                        <option value="Adidas Sports Shoes">Adidas Sports</option>
+                        <option value="Adidas Running Shoes">Adidas Running</option>
+                    </select>
+                </td>
+            </tr>
+        </table>
+        <br>
+        <div align="center">
+            <table>
+                <tr>
+                    <button style="font-size:25px;" type = 'submit' onclick="document.forms['orderShoe'].action = '/placeOrder'; return true;">
+                        Place Order
+                    </button>
+                </tr>
+            </table>
+        </div>
+    </form>
+</div>
 </body>
 </html>

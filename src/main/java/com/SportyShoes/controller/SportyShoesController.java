@@ -40,8 +40,8 @@ public class SportyShoesController {
 
     @GetMapping("/login")
     public String login(@RequestParam(name="name",
-            required=false,
-            defaultValue="Customer") String name,
+                                    required=false,
+                                    defaultValue="Customer") String name,
                            Model model) {
         model.addAttribute("name", name);
         model.addAttribute("appName", appName);
@@ -77,10 +77,26 @@ public class SportyShoesController {
         return redirectUrl;
     }
 
-    @GetMapping("OrderShoe")
+    @GetMapping("/OrderShoe")
     public String OrderShoe(Model model){
         model.addAttribute("appName", appName);
         return "orderShoe";
+    }
+
+    @GetMapping("/placeOrder")
+    public String placeOrder(HttpServletRequest request, Model model){
+        Map<String, String[]> requestParam = request.getParameterMap();
+        String customerName[] = requestParam.get("customerName");
+        String orderQuantity[] = requestParam.get("orderQty");
+        String productTypes[] = requestParam.get("productType");
+        OrderDetails orderDetails = new OrderDetails();
+        orderDetails.setCustomerName(customerName[0]);
+        orderDetails.setOrderQty(orderQuantity[0]);
+        orderDetails.setOrderProduct(productTypes[0]);
+        sportyShoesService.saveCustomerOrder(orderDetails);
+        model.addAttribute("appName", appName);
+
+        return "orderPlaceSuccess";
     }
 
     @GetMapping("/product")
