@@ -93,4 +93,33 @@ public class SportyShoesService {
         productDetails = mongoDbConnector.addToInventory(productDetails);
         return productDetails.getProductName();
     }
+
+    /**
+     * Method to fetch User details.
+     *
+     * @param searchParam
+     * @return
+     */
+    public ApplicationUser fetchProfile(String searchParam){
+        ApplicationUser userProfile = new ApplicationUser();
+        System.out.println("Query Param - "+searchParam);
+        userProfile.setAdminFName(searchParam.substring(0,searchParam.indexOf(' ')));
+        userProfile.setAdminLName(searchParam.substring(searchParam.indexOf(' '), searchParam.length()));
+        userProfile = mongoDbConnector.fetchProfile(userProfile);
+        return userProfile;
+    }
+
+    /**
+     * Method to update User details.
+     *
+     * @param applicationUser
+     * @return
+     */
+    public boolean updateProfile(ApplicationUser applicationUser){
+        boolean isUpdated = false;
+        applicationUser = mongoDbConnector.updateProfile(applicationUser);
+        if(applicationUser != null)
+            isUpdated = true;
+        return isUpdated;
+    }
 }

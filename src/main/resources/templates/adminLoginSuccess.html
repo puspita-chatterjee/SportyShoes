@@ -92,11 +92,22 @@
     </p>
 </form>
 <form name="logoutForm">
-    <p>
-        <button class="button" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
-            Logout
-        </button>
-    </p>
+    <p>Edit Profile</p>
+    <table>
+        <tr>
+            <td><input th:value="*{name}" type="hidden" name="userName"></td>
+            <td>
+                <button class="button" type = 'submit' onclick="document.forms['logoutForm'].action = '/fetchProfile'; return true;">
+                    Edit Profile
+                </button>
+            </td>
+            <td>
+                <button class="button" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
+                    Logout
+                </button>
+            </td>
+        </tr>
+    </table>
 </form>
 </div>
 </body>

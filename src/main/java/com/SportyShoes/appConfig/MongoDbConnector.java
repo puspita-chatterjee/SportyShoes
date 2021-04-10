@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -92,5 +93,38 @@ public class MongoDbConnector {
      */
     public Product addToInventory(Product productDetails){
         return mongoTemplate.insert(productDetails);
+    }
+
+    /**
+     * Method to fetch Admin Profile
+     * details.
+     *
+     * @param userProfile
+     * @return
+     */
+    public ApplicationUser fetchProfile(ApplicationUser userProfile){
+        List<ApplicationUser> userList = null;
+        Query searchParam = new Query();
+        searchParam.addCriteria(
+                Criteria.where("adminFName").is(userProfile.getAdminFName().trim()).
+                        and("adminLName").is(userProfile.getAdminLName().trim()));
+        userList = mongoTemplate.find(searchParam, ApplicationUser.class);
+        return userList.get(0);
+    }
+
+    /**
+     * Method to update Admin Profile
+     * details.
+     * @param userProfile
+     * @return
+     */
+    public ApplicationUser updateProfile(ApplicationUser userProfile){
+        Query queryParam = new Query();
+        queryParam.addCriteria(Criteria.where("adminId").is(userProfile.getAdminId()));
+        Update update = new Update();
+        update.set("role", userProfile.getRole());
+        update.set("password", userProfile.getPassword());
+        userProfile = mongoTemplate.findAndModify(queryParam, update, ApplicationUser.class);
+        return userProfile;
     }
 }

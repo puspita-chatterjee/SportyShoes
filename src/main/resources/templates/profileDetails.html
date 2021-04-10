@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        p {text-align: center;}
+        button {text-align: centre;}
+        body {
+            background-image: url('/images/admin_Image.jpeg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color: #FFFFFF;
+        }
+        .adminUpdateTableStyle {
+            width: 70%;
+            border-collapse: collapse;
+        }
+        .adminUpdateTableStyle tr {
+            color: #00040c;
+        }
+        .adminUpdateTableStyle tr {
+            padding: 5px;
+        }
+        .adminUpdateTableStyle td {
+            border: #00040c 1px;
+            font: bold 18px/1.1em Arial, Helvetica, sans-serif;
+            letter-spacing: 0.1em;
+            color: #00040c;
+        }
+        .button {
+            background-color: #08acf3;
+            border: 2px solid #032cf7;
+            color: #040000;
+            padding: 14px 40px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .button:hover {
+            background-color: #032cf7;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
+        footer {
+            text-align: center;
+            padding: 3px;
+            color: black;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Sporty Shoes E-Shop - Admin Update</title>
+</head>
+<body>
+<h1><p>Update Your details - </p></h1>
+<div>
+    <form name = "adminUpdate">
+        <table align="center" class="adminUpdateTableStyle">
+            <tr>
+                <td><p>Admin Id:</p></td>
+                <td><input size="5" th:value="*{adminId}" type="text" readonly name="adminId"></td>
+
+            </tr>
+            <tr>
+                <td><p>Admin First Name:</p></td>
+                <td><input size = "35" th:value="*{adminFName}" type = "text" readonly name = 'adminFName'/></td>
+            </tr>
+            <tr>
+                <td><p>Admin Last Name:</p></td>
+                <td><input size = "35" th:value="*{adminLName}" type = 'text' readonly name = 'adminLName'/></td>
+            </tr>
+            <tr>
+                <td><p>Role:**</p></td>
+                <td><input size = "25" th:value="*{role}" type = 'text' name = 'role'/></td>
+            </tr>
+            <tr>
+                <td><p>User Name:</p></td>
+                <td><input size = "20" th:value="*{username}" type = 'text' readonly name = 'username'/></td>
+            </tr>
+            <tr>
+                <td><p>Password:**</p></td>
+                <td><input size = "20" th:value="*{password}" type = 'password' name = 'password'/></td>
+            </tr>
+        </table>
+        <br>
+        <div align="center">
+            <table>
+                <tr>
+                    <td>
+                        <button class="button" type = 'submit'>
+                            Deactivate
+                        </button>
+                    </td>
+                    <td>
+                        <button class="button" type = 'submit' onclick="document.forms['adminUpdate'].action = '/updateAccount'; return true;">
+                            Update Profile
+                        </button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </form>
+    <footer>
+        <p>Fields marked as ** are only editable.</p>
+    </footer>
+</div>
+</body>
+</html>

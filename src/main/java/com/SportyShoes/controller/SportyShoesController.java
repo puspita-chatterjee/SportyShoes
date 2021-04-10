@@ -219,4 +219,54 @@ public class SportyShoesController {
         model.addAttribute("appName", appName);
         return "removeProduct";
     }
+
+    /**
+     * Handles API
+     * Admin Profile Fetch.
+     *
+     * @param request
+     * @param model
+     * @return
+     */
+    @GetMapping("/fetchProfile")
+    public String fetchProfile(HttpServletRequest request,Model model){
+        Map<String, String[]> userNameParam = request.getParameterMap();
+        String userName[] = userNameParam.get("userName");
+        String searchParam = userName[0];
+        ApplicationUser userProfileDetails = sportyShoesService.fetchProfile(searchParam);
+        model.addAttribute("adminId", userProfileDetails.getAdminId());
+        model.addAttribute("adminFName", userProfileDetails.getAdminFName());
+        model.addAttribute("adminLName", userProfileDetails.getAdminLName());
+        model.addAttribute("role", userProfileDetails.getRole());
+        model.addAttribute("username", userProfileDetails.getUsername());
+        model.addAttribute("password", userProfileDetails.getPassword());
+        model.addAttribute("appName", appName);
+        return "profileDetails";
+    }
+
+    /**
+     * Handles API
+     * Admin Profile Updates.
+     *
+     * @param request
+     * @param model
+     * @return
+     */
+    @GetMapping("/updateAccount")
+    public String updateProfile(HttpServletRequest request,Model model){
+        Map<String, String[]> userUpdateParam = request.getParameterMap();
+
+        String adminId[] = userUpdateParam.get("adminId");
+        String role[] = userUpdateParam.get("role");
+        String password[] = userUpdateParam.get("password");
+
+        ApplicationUser applicationUser = new ApplicationUser();
+        applicationUser.setAdminId(adminId[0]);
+        applicationUser.setRole(role[0]);
+        applicationUser.setPassword(password[0]);
+
+        sportyShoesService.updateProfile(applicationUser);
+
+        return "profileUpdateSuccess";
+    }
 }
