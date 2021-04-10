@@ -57,8 +57,10 @@
 <div align="center">
 <h1><p th:text="'Hello Admin - ' + ${name} + '!'" /></h1>
 <form name="adminSuccessForm">
-    <p>Manage Store Inventory</p>
     <table>
+        <th th:span="3">
+            <td><p>Manage Store Inventory:</p></td>
+        </th>
         <tr>
             <td>
                 <button class="button1" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/addProduct'; return true;">
@@ -91,8 +93,9 @@
         </button>
     </p>
 </form>
+    <br><br><br>
 <form name="logoutForm">
-    <p>Edit Profile</p>
+    <p>Profile Activities:</p>
     <table>
         <tr>
             <td><input th:value="*{name}" type="hidden" name="userName"></td>
