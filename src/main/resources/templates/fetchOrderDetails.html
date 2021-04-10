@@ -35,11 +35,30 @@
             background-color: #47ae32;
             color: #00040c;
         }
+        .button {
+            background-color: #08acf3;
+            border: 2px solid #032cf7;
+            color: #040000;
+            padding: 14px 40px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .button:hover {
+            background-color: #032cf7;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
     </style>
 </head>
 <body>
 <h1><p>Sporty Shoes E-Shop Order Details</p></h1>
-<div>
+<div align="center">
     <table align="center" class="myTableText">
         <tr>
             <th>Order Id</th>
@@ -60,6 +79,13 @@
             <td th:text="${order.orderCreateDate}"></td>
         </tr>
     </table>
+    <form name="logoutForm">
+        <p>
+            <button class="button" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
+                Logout
+            </button>
+        </p>
+    </form>
 </div>
 </body>
 </html>

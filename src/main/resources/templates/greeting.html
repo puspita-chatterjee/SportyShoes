@@ -15,6 +15,25 @@
         }
         h1 { color: #a816f1; }
         h2 { color: #337fea; }
+        .button {
+            background-color: #08acf3;
+            border: 2px solid #032cf7;
+            color: #040000;
+            padding: 14px 40px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .button:hover {
+            background-color: #032cf7;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
     </style>
 </head>
 <body>
@@ -24,14 +43,14 @@
 <br/>
 <form name="loginForm">
     <p>
-        <button style="font-size:25px;" type = 'submit' onclick="document.forms['loginForm'].action = '/login'; return true;">
+        <button class="button" type = 'submit' onclick="document.forms['loginForm'].action = '/login'; return true;">
             Log in
         </button>
     </p>
 </form>
 <form name="productListForm">
     <p>
-        <button style="font-size:25px;" type = 'submit' onclick="document.forms['productListForm'].action = '/product'; return true;">
+        <button class="button" type = 'submit' onclick="document.forms['productListForm'].action = '/product'; return true;">
             View Products
         </button>
     </p>

@@ -11,22 +11,66 @@
 	  	background-size: 100% 100%;
 	  	color: #FFFFFF;
 	}
+	.button {
+		background-color: #08acf3;
+		border: 2px solid #032cf7;
+		color: #040000;
+		padding: 14px 40px;;
+		text-align: center;
+		text-decoration: none;
+		display: inline-block;
+		font-size: 20px;
+		margin: 4px 2px;
+		cursor: pointer;
+		border-radius: 12px;
+		box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	}
+	.button:hover {
+		background-color: #032cf7;
+		color: white;
+		box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	h1 { color: #050107; }
+	.loginTableStyle {
+		width: 30%;
+		border-collapse: collapse;
+	}
+	.loginTableStyle tr {
+		color: #00040c;
+	}
+	.loginTableStyle tr {
+		padding: 5px;
+	}
+	.loginTableStyle td {
+		border: #00040c 1px;
+		font: bold 18px/1.1em Arial, Helvetica, sans-serif;
+		letter-spacing: 0.1em;
+		color: #00040c;
+	}
 	</style>
 	<meta charset="UTF-8">
 	<title>Sporty Shoes Application - Login</title>
 </head>
 <body>
-	<form name="loginForm">
-		<h1><p>Sporty Shoes E-Shop</p></h1>
-		<p>
-			Enter User Name :<input type = "text" name = 'uname'/>
-		</p>
-		<p>
-			Enter Password :<input type = 'password' name = 'pass'/>
-		</p>
-		<p>
-			<button style="font-size:25px;" type = 'submit' onclick="document.forms['loginForm'].action = '/validateLogin'; return true;">login</button>
-		</p>
-	</form>
+<div align="center">
+<h1>Please provide Login details - </h1>
+<br>
+<form name="loginForm">
+	<table align="center" class="loginTableStyle">
+		<tr>
+			<td>Enter User Name :</td>
+			<td><input type = "text" name = 'uname'/></td>
+		</tr>
+		<td></td>
+		<tr>
+			<td>Enter Password :</td>
+			<td><input type = 'password' name = 'pass'/></td>
+		</tr>
+	</table>
+	<p>
+		<button class="button" type = 'submit' onclick="document.forms['loginForm'].action = '/validateLogin'; return true;">Login</button>
+	</p>
+</form>
+</div>
 </body>
 </html>

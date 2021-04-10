@@ -13,6 +13,25 @@
         }
         h1 { color: #B544E5; }
         h2 { color: #337fea; }
+        .button {
+            background-color: #08acf3;
+            border: 2px solid #032cf7;
+            color: #040000;
+            padding: 14px 40px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .button:hover {
+            background-color: #032cf7;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
     </style>
     <meta charset="UTF-8">
     <title>Welcome to Sporty Shoes E-Shop</title>
@@ -22,14 +41,14 @@
 <h2><p th:text="'Hello - ' + ${name} + ' !'" /></h2>
 <form name="customerSuccessForm">
     <p>
-        <button style="font-size:25px;" type = 'submit' onclick="document.forms['customerSuccessForm'].action = '/OrderShoe'; return true;">
+        <button class="button" type = 'submit' onclick="document.forms['customerSuccessForm'].action = '/OrderShoe'; return true;">
             Order Your favourite Style !
         </button>
     </p>
 </form>
 <form name="logoutForm">
     <p>
-        <button style="font-size:25px;" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
+        <button class="button" type = 'submit' onclick="document.forms['logoutForm'].action = '/greeting'; return true;">
             Logout
         </button>
     </p>
