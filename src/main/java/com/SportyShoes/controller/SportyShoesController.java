@@ -116,4 +116,38 @@ public class SportyShoesController {
         model.addAttribute("appName", appName);
         return "fetchOrderDetails";
     }
+
+    @GetMapping("/addProduct")
+    public String addProduct(Model model){
+        return "addProduct";
+    }
+
+    @GetMapping("/addToInventory")
+    public String addToInventory(HttpServletRequest request, Model model){
+        Map<String, String[]> productRequestParam = request.getParameterMap();
+        String productId[] = productRequestParam.get("productId");
+        String productName[] = productRequestParam.get("productName");
+        String productManufacturer[] = productRequestParam.get("productManufacturer");
+        String productSize[] = productRequestParam.get("productSize");
+        String productFor[] = productRequestParam.get("productFor");
+        Product productDetails = new Product();
+        productDetails.setProductId(productId[0]);
+        productDetails.setProductName(productName[0]);
+        productDetails.setProductManufacturer(productManufacturer[0]);
+        productDetails.setProductSize(productSize[0]);
+        productDetails.setProductFor(productFor[0]);
+        String addedProductName = sportyShoesService.addToInventory(productDetails);
+
+        model.addAttribute("appName", appName);
+        model.addAttribute("addedProductName", addedProductName);
+        return "productAdded";
+    }
+
+    @GetMapping("/removeProduct")
+    public String removeProduct(Model model){
+        List<Product> productList = sportyShoesService.getProductList();
+        model.addAttribute("productList", productList);
+        model.addAttribute("appName", appName);
+        return "removeProduct";
+    }
 }

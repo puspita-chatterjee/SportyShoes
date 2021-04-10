@@ -76,4 +76,15 @@ public class MongoDbConnector {
     public OrderDetails saveCustomerOrder(OrderDetails orderDetails){
         return mongoTemplate.insert(orderDetails);
     }
+
+    /**
+     * Method to save New Product
+     * details in Inventory.
+     *
+     * @param
+     * @return
+     */
+    public Product addToInventory(Product productDetails){
+        return mongoTemplate.insert(productDetails);
+    }
 }

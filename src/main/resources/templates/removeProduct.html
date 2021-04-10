@@ -1,0 +1,82 @@
+<!DOCTYPE HTML>
+<html
+        xmlns:height="http://www.w3.org/1999/xhtml"
+        xmlns:width="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sporty Shoes Application</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        p {text-align: center;}
+        button {text-align: centre;}
+        body {
+            background: url("/images/shoeList_Image.jpeg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
+            color: #FFFFFF;
+        }
+        h1 { color: #B544E5; }
+        h2 { color: #337fea; }
+        .productTableStyle {
+            width: 60%;
+            border-collapse: collapse;
+            background-color: #98FB98;
+        }
+        .productTableStyle td {
+            border: 2px solid #47ae32;
+            color: #00040c;
+        }
+        .productTableStyle th {
+            border: 2px solid #47ae32;
+            padding: 5px;
+        }
+        .productTableStyle th {
+            font: bold 18px/1.1em Arial, Helvetica, sans-serif;
+            text-shadow: 1px 1px 4px black;
+            letter-spacing: 0.1em;
+            background-color: #47ae32;
+            color: #00040c;
+        }
+        .button1 {
+            background-color: #f9022c;
+            border: 2px solid #580107;
+            color: #040000;
+            padding: 7px 7px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 10px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+        }
+        .button1:hover {
+            background-color: #580107;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<h2><p>Select product to delete from inventory - </span></p></h2>
+<p align="center">
+<div>
+    <table align="center" class="productTableStyle">
+        <tr>
+            <th>Product Manufacturer</th>
+            <th>Product Name</th>
+            <th>Delete Product</th>
+        </tr>
+        <tr th:each="product : ${productList}">
+            <td th:text="${product.productManufacturer}"></td>
+            <td th:text="${product.productName}"></td>
+            <td align="center">
+                <button class="button1" type = 'submit' >
+                    Delete product
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
+</p>
+</body>
+</html>

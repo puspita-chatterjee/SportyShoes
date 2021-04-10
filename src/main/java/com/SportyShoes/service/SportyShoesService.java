@@ -75,4 +75,17 @@ public class SportyShoesService {
         orderDetails = mongoDbConnector.saveCustomerOrder(orderDetails);
         return orderDetails.getOrderId();
     }
+
+    /**
+     * Method responsible to save
+     * Product details in Mongo.
+     *
+     * @param productDetails
+     * @return
+     */
+    public String addToInventory(Product productDetails){
+        productDetails.setProductForSale("Y");
+        productDetails = mongoDbConnector.addToInventory(productDetails);
+        return productDetails.getProductName();
+    }
 }

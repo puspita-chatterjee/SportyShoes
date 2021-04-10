@@ -30,18 +30,58 @@
             color: white;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
+        .button1 {
+            background-color: #2af703;
+            border: 2px solid #1a7506;
+            color: #040000;
+            padding: 7px 7px;;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 15px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+        .button1:hover {
+            background-color: #1a7506;
+            color: white;
+            box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+        }
     </style>
     <meta charset="UTF-8">
     <title>Welcome to Sporty Shoes E-Shop</title>
 </head>
 <body>
-<h1><p>Welcome to Sporty Shoes E-Shop !!!!</p></h1>
+<div align="center">
 <h1><p th:text="'Hello Admin - ' + ${name} + '!'" /></h1>
 <form name="adminSuccessForm">
+    <p>Manage Store Inventory</p>
+    <table>
+        <tr>
+            <td>
+                <button class="button1" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/addProduct'; return true;">
+                    Add product
+                </button>
+            </td>
+
+            <td>
+                <button class="button1" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/removeProduct'; return true;">
+                    Remove products
+                </button>
+            </td>
+
+            <td>
+                <button class="button1" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/product'; return true;">
+                    View Inventory
+                </button>
+            </td>
+        </tr>
+
+    </table>
     <p>
-        <button class="button" type = 'submit' onclick="document.forms['adminSuccessForm'].action = '/manageStore'; return true;">
-            Manage Store Inventory
-        </button>
+
     </p>
 </form>
 <form name="checkOrderForm">
@@ -58,5 +98,6 @@
         </button>
     </p>
 </form>
+</div>
 </body>
 </html>

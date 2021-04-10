@@ -15,4 +15,5 @@ public class Product {
     private String productManufacturer;
     private String productSize;
     private String productFor;
+    private String productForSale;
 }
