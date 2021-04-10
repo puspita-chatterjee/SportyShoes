@@ -5,6 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+/**
+ * API Bean
+ */
+
 @Document(collection = "shoeList")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Getter

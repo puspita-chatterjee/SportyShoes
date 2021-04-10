@@ -10,8 +10,13 @@ import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.UUID;
+
+/**
+ * Application Service class
+ * to perform business Logic.
+ *
+ */
 
 @Component
 @Slf4j

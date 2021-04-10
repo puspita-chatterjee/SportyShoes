@@ -11,12 +11,16 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+
+/**
+ * API Controller class -
+ * which Server all Incoming
+ * requests.
+ */
 
 @Controller
 @Slf4j
@@ -28,6 +32,13 @@ public class SportyShoesController {
     @Autowired
     SportyShoesService sportyShoesService;
 
+    /**
+     * Application Home Page.
+     *
+     * @param name
+     * @param model
+     * @return
+     */
     @GetMapping("/greeting")
     public String greeting(@RequestParam(name="name",
                             required=false,
@@ -38,6 +49,13 @@ public class SportyShoesController {
         return "greeting";
     }
 
+    /**
+     * Handles API Login feature.
+     *
+     * @param name
+     * @param model
+     * @return
+     */
     @GetMapping("/login")
     public String login(@RequestParam(name="name",
                                     required=false,
@@ -48,6 +66,13 @@ public class SportyShoesController {
         return "login";
     }
 
+    /**
+     * API Login validation.
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping ("/validateLogin")
     public String validateLogin(HttpServletRequest request, Model model) {
         String redirectUrl = "";
@@ -77,12 +102,25 @@ public class SportyShoesController {
         return redirectUrl;
     }
 
+    /**
+     * Handles API ordering feature.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/OrderShoe")
     public String OrderShoe(Model model){
         model.addAttribute("appName", appName);
         return "orderShoe";
     }
 
+    /**
+     * API Ordering and Save into DB
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping("/placeOrder")
     public String placeOrder(HttpServletRequest request, Model model){
         Map<String, String[]> requestParam = request.getParameterMap();
@@ -101,6 +139,12 @@ public class SportyShoesController {
         return "orderPlaceSuccess";
     }
 
+    /**
+     * Handles API Product Fetch.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/product")
     public String productList(Model model) {
         List<Product> productList = sportyShoesService.getProductList();
@@ -109,6 +153,12 @@ public class SportyShoesController {
         return "product";
     }
 
+    /**
+     * Handles API Order Fetch.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/checkOrder")
     public String fetchOderList(Model model){
         List<OrderDetails> orderList = sportyShoesService.fetchOderList();
@@ -117,11 +167,24 @@ public class SportyShoesController {
         return "fetchOrderDetails";
     }
 
+    /**
+     * Handles API Addition.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/addProduct")
     public String addProduct(Model model){
         return "addProduct";
     }
 
+    /**
+     * API Product addition into DB.
+     *
+     * @param request
+     * @param model
+     * @return
+     */
     @GetMapping("/addToInventory")
     public String addToInventory(HttpServletRequest request, Model model){
         Map<String, String[]> productRequestParam = request.getParameterMap();
@@ -143,6 +206,12 @@ public class SportyShoesController {
         return "productAdded";
     }
 
+    /**
+     * Handles API Deletion.
+     *
+     * @param model
+     * @return
+     */
     @GetMapping("/removeProduct")
     public String removeProduct(Model model){
         List<Product> productList = sportyShoesService.getProductList();

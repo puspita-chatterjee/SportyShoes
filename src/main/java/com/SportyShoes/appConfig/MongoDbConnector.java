@@ -12,6 +12,12 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+/**
+ * Application Data Access
+ * Class.
+ *
+ */
+
 @Repository
 public class MongoDbConnector {
 
